@@ -17,7 +17,7 @@
                                 AllowSorting="True" AllowedSortOrders="Descending"
                                 AllowedDateTimeFilters="SingleDateRange" FilterPopupMode="DateSmart">
                     <dxg:GridColumn.EditSettings>
-                        <dxe:DateEditSettings DisplayFormat="H:mm MM/dd/yy"/>
+                        <dxe:DateEditSettings Mask="H:mm MM/dd/yy" MaskUseAsDisplayFormat="True"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
                 <dxg:GridColumn FieldName="Votes" IsSmart="True" Width="0.5*"
