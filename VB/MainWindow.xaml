@@ -24,7 +24,7 @@
                                 AllowSorting="True" DefaultSortOrder="Descending"
                                 AllowedBinaryFilters="GreaterOrEqual" FilterPopupMode="Excel"/>
                 <dxg:GridColumn FieldName="Priority" IsSmart="True" Width="*"
-                                AllowedBinaryFilters="Equals"/>
+                                AllowedBinaryFilters="Equals" FilterPopupMode="List"/>
             </dxg:GridControl.Columns>
             <dxg:GridControl.TotalSummary>
                 <dxg:GridSummaryItem SummaryType="Count" Alignment="Right"/>
