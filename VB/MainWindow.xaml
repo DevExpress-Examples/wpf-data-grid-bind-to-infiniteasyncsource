@@ -1,4 +1,4 @@
-<Window x:Class="InfiniteAsyncSourceSample.MainWindow"
+﻿<Window x:Class="InfiniteAsyncSourceSample.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -24,7 +24,7 @@
                                 AllowSorting="True" DefaultSortOrder="Descending"
                                 AllowedBinaryFilters="GreaterOrEqual" FilterPopupMode="Excel"/>
                 <dxg:GridColumn FieldName="Priority" IsSmart="True" Width="*"
-                                AllowedBinaryFilters="Equals"/>
+                                AllowedBinaryFilters="Equals" FilterPopupMode="List"/>
             </dxg:GridControl.Columns>
             <dxg:GridControl.TotalSummary>
                 <dxg:GridSummaryItem SummaryType="Count" Alignment="Right"/>
