@@ -1,0 +1,40 @@
+<Window x:Class="InfiniteAsyncSourceSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InfiniteAsyncSourceSample"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid>
+        <dxg:GridControl x:Name="grid">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Id" IsSmart="True" Width="*"/>
+                <dxg:GridColumn FieldName="Subject" IsSmart="True" Width="2*"/>
+                <dxg:GridColumn FieldName="User" IsSmart="True" Width="*"/>
+                <dxg:GridColumn FieldName="Created" IsSmart="True" Width="*"
+                                AllowSorting="True" AllowedSortOrders="Descending"
+                                AllowedDateTimeFilters="SingleDateRange" FilterPopupMode="DateSmart">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:DateEditSettings Mask="H:mm MM/dd/yy" MaskUseAsDisplayFormat="True"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Votes" IsSmart="True" Width="0.5*"
+                                AllowSorting="True" DefaultSortOrder="Descending"
+                                AllowedBinaryFilters="GreaterOrEqual" FilterPopupMode="Excel"/>
+                <dxg:GridColumn FieldName="Priority" IsSmart="True" Width="*"
+                                AllowedBinaryFilters="Equals"/>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem SummaryType="Count" Alignment="Right"/>
+                <dxg:GridSummaryItem SummaryType="Max" FieldName="Created" DisplayFormat="{}Last created: {0}" Alignment="Right"/>
+            </dxg:GridControl.TotalSummary>
+            <dxg:GridControl.View>
+                <dxg:TableView ColumnSortClearMode="Click"
+                               ShowFixedTotalSummary="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>

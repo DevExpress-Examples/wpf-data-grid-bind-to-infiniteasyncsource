@@ -1,8 +1,9 @@
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfiniteAsyncSourceSample", "InfiniteAsyncSourceSample\InfiniteAsyncSourceSample.csproj", "{CBD78818-35BA-4EF1-9ED2-466A918FB66C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfiniteAsyncSourceSample", "InfiniteAsyncSourceSample.csproj", "{CBD78818-35BA-4EF1-9ED2-466A918FB66C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
