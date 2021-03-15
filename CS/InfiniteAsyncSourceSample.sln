@@ -4,6 +4,8 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfiniteAsyncSourceSample", "InfiniteAsyncSourceSample\InfiniteAsyncSourceSample.csproj", "{CBD78818-35BA-4EF1-9ED2-466A918FB66C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfiniteAsyncSourceMVVMSample", "InfiniteAsyncSourceMVVMSample\InfiniteAsyncSourceMVVMSample.csproj", "{B841E3D6-D289-49A2-96E8-C076DBF89552}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,10 @@ Global
 		{CBD78818-35BA-4EF1-9ED2-466A918FB66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD78818-35BA-4EF1-9ED2-466A918FB66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD78818-35BA-4EF1-9ED2-466A918FB66C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B841E3D6-D289-49A2-96E8-C076DBF89552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B841E3D6-D289-49A2-96E8-C076DBF89552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B841E3D6-D289-49A2-96E8-C076DBF89552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B841E3D6-D289-49A2-96E8-C076DBF89552}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
