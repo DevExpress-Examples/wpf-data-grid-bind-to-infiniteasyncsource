@@ -13,13 +13,12 @@
         <local:IssueServiceViewModel/>
     </Window.DataContext>
     <Grid>
-        <dxg:GridControl>
+        <dxg:GridControl CriteriaConverter="{local:IssueFilterConverter}">
             <dxg:GridControl.ItemsSource>
                 <dx:InfiniteAsyncSource ElementType="{x:Type local:IssueData}" 
                                         FetchRowsCommand="{Binding FetchIssuesCommand}"
                                         GetTotalSummariesCommand="{Binding GetTotalSummariesCommand}"
-                                        GetUniqueValuesCommand="{Binding GetUniqueValuesCommand}"
-                                        FilterConverter="{local:IssueFilterConverter}"/>
+                                        GetUniqueValuesCommand="{Binding GetUniqueValuesCommand}"/>
             </dxg:GridControl.ItemsSource>
             <dxg:GridControl.Columns>
                 <dxg:GridColumn FieldName="Id" IsSmart="True" Width="*" AllowEditing="true"/>
