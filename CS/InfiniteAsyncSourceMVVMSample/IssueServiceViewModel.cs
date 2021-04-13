@@ -78,7 +78,7 @@ namespace InfiniteAsyncSourceMVVMSample {
 
         [Command]
         public void UpdateIssue(RowValidationArgs args) {
-            args.ResultAsync = UpdateIssueAsync((IssueData)args.Row);
+            args.ResultAsync = UpdateIssueAsync((IssueData)args.Item);
         }
         static async Task<ValidationErrorInfo> UpdateIssueAsync(IssueData issue) {
             await IssuesService.UpdateRowAsync(issue);
