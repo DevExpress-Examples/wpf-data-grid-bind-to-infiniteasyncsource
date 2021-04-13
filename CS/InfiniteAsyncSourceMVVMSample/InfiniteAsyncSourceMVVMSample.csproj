@@ -37,6 +37,7 @@
     <Reference Include="DevExpress.Data.Desktop.v21.1" />
     <Reference Include="DevExpress.Data.v21.1" />
     <Reference Include="DevExpress.Mvvm.v21.1" />
+    <Reference Include="DevExpress.Printing.v21.1.Core, Version=21.1.1.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Core.v21.1" />
     <Reference Include="DevExpress.Xpf.Grid.v21.1" />
     <Reference Include="DevExpress.Xpf.Grid.v21.1.Core" />
