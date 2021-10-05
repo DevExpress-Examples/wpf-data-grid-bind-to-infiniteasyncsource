@@ -78,11 +78,31 @@ namespace InfiniteAsyncSourceMVVMSample {
 
         [Command]
         public void UpdateIssue(RowValidationArgs args) {
-            args.ResultAsync = UpdateIssueAsync((IssueData)args.Item);
+            if(args.IsNewItem) {
+                args.ResultAsync = AddNewIssueAsync((IssueData)args.Item);
+            } else {
+                args.ResultAsync = UpdateIssueAsync((IssueData)args.Item);
+            }
         }
         static async Task<ValidationErrorInfo> UpdateIssueAsync(IssueData issue) {
             await IssuesService.UpdateRowAsync(issue);
             return null;
+        }
+        static async Task<ValidationErrorInfo> AddNewIssueAsync(IssueData issue) {
+            await IssuesService.AddNewRowAsync(issue);
+            return null;
+        }
+
+        [Command]
+        public void InitNewIssue(NewRowArgs args) {
+            args.Item = IssuesService.InitNewIssue();
+        }
+
+        [Command]
+        public void DeleteIssues(DeleteRowsValidationArgs args) {
+            foreach(IssueData item in args.Items) {
+                IssuesService.DeleteRowAsync(item).Wait();
+            }
         }
     }
 }

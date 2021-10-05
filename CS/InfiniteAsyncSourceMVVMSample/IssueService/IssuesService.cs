@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace InfiniteAsyncSourceMVVMSample {
     public static class IssuesService {
         #region helpers
         static object SyncObject = new object();
-        static Lazy<IssueData[]> AllIssues = new Lazy<IssueData[]>(() => {
+        static Lazy<List<IssueData>> AllIssues = new Lazy<List<IssueData>>(() => {
             var date = DateTime.Today;
             var rnd = new Random(0);
             return Enumerable.Range(0, 100000)
@@ -21,7 +20,7 @@ namespace InfiniteAsyncSourceMVVMSample {
                         created: date,
                         votes: rnd.Next(100),
                         priority: OutlookDataGenerator.GetPriority());
-                }).ToArray();
+                }).ToList();
         });
         class DefaultSortComparer : IComparer<IssueData> {
             int IComparer<IssueData>.Compare(IssueData x, IssueData y) {
@@ -71,6 +70,21 @@ namespace InfiniteAsyncSourceMVVMSample {
             data.Votes = row.Votes;
             data.Created = row.Created;
             await System.Threading.Tasks.Task.Delay(500).ConfigureAwait(false);
+        }
+
+        public static IssueData InitNewIssue() {
+            var maxId = AllIssues.Value.Max(x => x.Id);
+            return new IssueData(maxId + 1, string.Empty, 0, DateTime.Now, 0, Priority.Normal);
+        }
+
+        public async static Task AddNewRowAsync(IssueData row) {
+            await Task.Delay(500).ConfigureAwait(false);
+            AllIssues.Value.Insert(0, row);
+        }
+
+        public async static Task DeleteRowAsync(IssueData row) {
+            await Task.Delay(500).ConfigureAwait(false);
+            AllIssues.Value.Remove(AllIssues.Value.Find(x => x.Id == row.Id));
         }
 
         #region filter

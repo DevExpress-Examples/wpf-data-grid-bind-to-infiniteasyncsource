@@ -10,6 +10,9 @@
         Title="MainWindow" Height="600" Width="800">
     <Grid>
         <dxg:GridControl x:Name="grid">
+            <dxg:GridControl.InputBindings>
+                <KeyBinding Command="{Binding ElementName=view, Path=Commands.DeleteFocusedRow}" CommandTarget="{Binding ElementName=view}" Key="Delete"/>
+            </dxg:GridControl.InputBindings>
             <dxg:GridControl.Columns>
                 <dxg:GridColumn FieldName="Id" IsSmart="True" AllowEditing="True" Width="*"/>
                 <dxg:GridColumn FieldName="Subject" IsSmart="True" AllowEditing="True" Width="2*"/>
@@ -36,7 +39,9 @@
                                ShowFixedTotalSummary="True"
                                NewItemRowPosition="Top"
                                ShowUpdateRowButtons="OnCellEditorOpen"
-                               ValidateRow="CreateUpdateRow"/>
+                               ValidateRow="CreateUpdateRow"
+                               ValidateDeleteRows="DeleteRows"
+                               x:Name="view"/>
             </dxg:GridControl.View>
         </dxg:GridControl>
     </Grid>

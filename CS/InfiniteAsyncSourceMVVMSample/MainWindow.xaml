@@ -14,6 +14,9 @@
     </Window.DataContext>
     <Grid>
         <dxg:GridControl CriteriaConverter="{local:IssueFilterConverter}">
+            <dxg:GridControl.InputBindings>
+                <KeyBinding Command="{Binding ElementName=view, Path=Commands.DeleteFocusedRow}" CommandTarget="{Binding ElementName=view}" Key="Delete"/>
+            </dxg:GridControl.InputBindings>
             <dxg:GridControl.ItemsSource>
                 <dx:InfiniteAsyncSource ElementType="{x:Type local:IssueData}" 
                                         FetchRowsCommand="{Binding FetchIssuesCommand}"
@@ -21,7 +24,7 @@
                                         GetUniqueValuesCommand="{Binding GetUniqueValuesCommand}"/>
             </dxg:GridControl.ItemsSource>
             <dxg:GridControl.Columns>
-                <dxg:GridColumn FieldName="Id" IsSmart="True" Width="*" AllowEditing="true"/>
+                <dxg:GridColumn FieldName="Id" IsSmart="True" Width="*"/>
                 <dxg:GridColumn FieldName="Subject" IsSmart="True" Width="2*" AllowEditing="true"/>
                 <dxg:GridColumn FieldName="UserId" IsSmart="True" Width="*" AllowEditing="true">
                     <dxg:GridColumn.EditSettings>
@@ -49,7 +52,11 @@
                 <dxg:TableView ColumnSortClearMode="Click"
                                ShowFixedTotalSummary="True"
                                ShowUpdateRowButtons="OnCellEditorOpen"
-                               ValidateRowCommand="{Binding UpdateIssueCommand}"/>
+                               NewItemRowPosition="Top"
+                               AddingNewRowCommand="{Binding InitNewIssueCommand}"
+                               ValidateRowCommand="{Binding UpdateIssueCommand}"
+                               ValidateDeleteRowsCommand="{Binding DeleteIssuesCommand}"
+                               x:Name="view"/>
             </dxg:GridControl.View>
         </dxg:GridControl>
     </Grid>

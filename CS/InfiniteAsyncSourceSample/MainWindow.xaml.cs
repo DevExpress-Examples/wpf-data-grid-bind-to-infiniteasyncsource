@@ -115,6 +115,14 @@ namespace InfiniteAsyncSourceSample {
         void CreateUpdateRow(object sender, DevExpress.Xpf.Grid.GridRowValidationEventArgs e) {
             if(e.IsNewItem) {
                 e.UpdateRowResult = IssuesService.AddNewIssueAsync((IssueData)e.Value);
+            } else {
+                e.UpdateRowResult = IssuesService.UpdateRowAsync((IssueData)e.Value);
+            }
+        }
+
+        private void DeleteRows(object sender, DevExpress.Xpf.Grid.GridDeleteRowsValidationEventArgs e) {
+            foreach(var row in e.Rows) {
+                IssuesService.DeleteIssueAsync((IssueData)row).Wait();
             }
         }
     }

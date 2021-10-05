@@ -20,6 +20,10 @@ namespace InfiniteAsyncSourceSample {
         public DateTime Created { get; set; }
         public int Votes { get;  set; }
         public Priority Priority { get; set; }
+
+        public IssueData Clone() {
+            return new IssueData(Id, Subject, UserId, Created, Votes, Priority);
+        }
     }
     public enum Priority { Low, BelowNormal, Normal, AboveNormal, High }
 }

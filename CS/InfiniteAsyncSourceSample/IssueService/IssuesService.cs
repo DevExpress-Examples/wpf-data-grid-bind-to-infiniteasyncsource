@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace InfiniteAsyncSourceSample {
@@ -37,7 +36,7 @@ namespace InfiniteAsyncSourceSample {
             var issues = SortIssues(sortOrder, AllIssues.Value);
             if(filter != null)
                 issues = FilterIssues(filter, issues);
-            return issues.Skip(skip).Take(take).ToArray();
+            return issues.Skip(skip).Take(take).Select(x => x.Clone()).ToArray();
         }
 
         public async static Task<IssuesSummaries> GetSummariesAsync(IssueFilter filter) {
@@ -52,6 +51,26 @@ namespace InfiniteAsyncSourceSample {
         public async static Task AddNewIssueAsync(IssueData issueData) {
             await Task.Delay(300).ConfigureAwait(false);
             AllIssues.Value.Insert(0, issueData);
+        }
+
+        public async static Task DeleteIssueAsync(IssueData issueData) {
+            await Task.Delay(300).ConfigureAwait(false);
+            AllIssues.Value.Remove(issueData);
+        }
+
+        public async static Task UpdateRowAsync(IssueData row) {
+            if(row == null)
+                return;
+            IssueData data = AllIssues.Value.FirstOrDefault(x => x.Id == row.Id);
+            if(data == null)
+                return;
+            data.Priority = row.Priority;
+            data.Subject = row.Subject;
+            data.Votes = row.Votes;
+            data.Created = row.Created;
+            data.User = row.User;
+            data.Id = row.Id;
+            await Task.Delay(500).ConfigureAwait(false);
         }
 
         #region filter
