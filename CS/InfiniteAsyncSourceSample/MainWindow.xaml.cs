@@ -3,7 +3,7 @@ using DevExpress.Xpf.Data;
 using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 using System.Windows;
 
 namespace InfiniteAsyncSourceSample {
