@@ -45,7 +45,7 @@ namespace InfiniteAsyncSourceSample {
             if(filter != null)
                 issues = FilterIssues(filter, issues);
             var lastCreated = issues.Any() ? issues.Max(x => x.Created) : default(DateTime?);
-            return new IssuesSummaries(count: issues.Count(), lastCreated: lastCreated);
+            return new IssuesSummaries(issues.Count(), lastCreated);
         }
 
         public async static Task AddNewIssueAsync(IssueData issueData) {
