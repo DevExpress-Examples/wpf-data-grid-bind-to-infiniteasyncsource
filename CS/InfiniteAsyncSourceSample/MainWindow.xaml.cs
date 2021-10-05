@@ -111,5 +111,11 @@ namespace InfiniteAsyncSourceSample {
                 @null: default(IssueFilter)
             );
         }
+
+        void CreateUpdateRow(object sender, DevExpress.Xpf.Grid.GridRowValidationEventArgs e) {
+            if(e.IsNewItem) {
+                e.UpdateRowResult = IssuesService.AddNewIssueAsync((IssueData)e.Value);
+            }
+        }
     }
 }

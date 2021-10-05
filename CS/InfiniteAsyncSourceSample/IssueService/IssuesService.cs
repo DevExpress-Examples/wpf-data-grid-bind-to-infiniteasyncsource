@@ -8,7 +8,7 @@ namespace InfiniteAsyncSourceSample {
     public static class IssuesService {
         #region helpers
         static object SyncObject = new object();
-        static Lazy<IssueData[]> AllIssues = new Lazy<IssueData[]>(() => {
+        static Lazy<List<IssueData>> AllIssues = new Lazy<List<IssueData>>(() => {
             var date = DateTime.Today;
             var rnd = new Random(0);
             return Enumerable.Range(0, 100000)
@@ -21,7 +21,7 @@ namespace InfiniteAsyncSourceSample {
                         created: date,
                         votes: rnd.Next(100),
                         priority: OutlookDataGenerator.GetPriority());
-                }).ToArray();
+                }).ToList();
         });
         class DefaultSortComparer : IComparer<IssueData> {
             int IComparer<IssueData>.Compare(IssueData x, IssueData y) {
@@ -47,6 +47,11 @@ namespace InfiniteAsyncSourceSample {
                 issues = FilterIssues(filter, issues);
             var lastCreated = issues.Any() ? issues.Max(x => x.Created) : default(DateTime?);
             return new IssuesSummaries(count: issues.Count(), lastCreated: lastCreated);
+        }
+
+        public async static Task AddNewIssueAsync(IssueData issueData) {
+            await Task.Delay(300).ConfigureAwait(false);
+            AllIssues.Value.Insert(0, issueData);
         }
 
         #region filter
