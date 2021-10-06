@@ -51,7 +51,7 @@ Namespace InfiniteAsyncSourceSample
 
         Public Async Function DeleteIssueAsync(ByVal issueData As IssueData) As Task
             Await Task.Delay(300).ConfigureAwait(False)
-            AllIssues.Value.Remove(issueData)
+            AllIssues.Value.Remove(AllIssues.Value.Find(Function(x) x.Id = issueData.Id))
         End Function
 
         Public Async Function UpdateRowAsync(ByVal row As IssueData) As Task

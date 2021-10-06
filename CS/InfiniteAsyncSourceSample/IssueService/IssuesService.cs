@@ -55,7 +55,7 @@ namespace InfiniteAsyncSourceSample {
 
         public async static Task DeleteIssueAsync(IssueData issueData) {
             await Task.Delay(300).ConfigureAwait(false);
-            AllIssues.Value.Remove(issueData);
+            AllIssues.Value.Remove(AllIssues.Value.Find(x => x.Id == issueData.Id));
         }
 
         public async static Task UpdateRowAsync(IssueData row) {
