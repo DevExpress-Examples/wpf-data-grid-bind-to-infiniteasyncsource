@@ -69,8 +69,12 @@ namespace InfiniteAsyncSourceSample {
             data.Votes = row.Votes;
             data.Created = row.Created;
             data.User = row.User;
-            data.Id = row.Id;
             await Task.Delay(500).ConfigureAwait(false);
+        }
+
+        public static IssueData InitNewIssue() {
+            var maxId = AllIssues.Value.Max(x => x.Id);
+            return new IssueData(maxId + 1, string.Empty, "", DateTime.Now, 0, Priority.Normal);
         }
 
         #region filter

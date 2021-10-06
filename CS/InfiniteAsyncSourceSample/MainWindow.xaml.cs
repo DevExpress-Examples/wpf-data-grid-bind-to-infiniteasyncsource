@@ -125,5 +125,9 @@ namespace InfiniteAsyncSourceSample {
                 IssuesService.DeleteIssueAsync((IssueData)row).Wait();
             }
         }
+
+        private void InitNewRow(object sender, AddingNewEventArgs e) {
+            e.NewObject = IssuesService.InitNewIssue();
+        }
     }
 }

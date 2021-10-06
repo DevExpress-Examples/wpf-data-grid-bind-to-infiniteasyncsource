@@ -2,10 +2,6 @@
 
 namespace InfiniteAsyncSourceSample {
     public class IssueData {
-        public IssueData() {
-
-        }
-
         public IssueData(int id, string subject, string user, DateTime created, int votes, Priority priority) {
             Id = id;
             Subject = subject;
@@ -14,7 +10,7 @@ namespace InfiniteAsyncSourceSample {
             Votes = votes;
             Priority = priority;
         }
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public string Subject { get; set; }
         public string User { get; set; }
         public DateTime Created { get; set; }
@@ -22,7 +18,7 @@ namespace InfiniteAsyncSourceSample {
         public Priority Priority { get; set; }
 
         public IssueData Clone() {
-            return new IssueData(Id, Subject, UserId, Created, Votes, Priority);
+            return new IssueData(Id, Subject, User, Created, Votes, Priority);
         }
     }
     public enum Priority { Low, BelowNormal, Normal, AboveNormal, High }
