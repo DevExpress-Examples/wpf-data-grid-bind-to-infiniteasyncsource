@@ -2,6 +2,12 @@
 
 namespace InfiniteAsyncSourceMVVMSample {
     public class IssueData {
+        public IssueData() {
+            Id = -1;
+            Created = DateTime.Now;
+            Priority = Priority.Normal;
+        }
+
         public IssueData(int id, string subject, int userId, DateTime created, int votes, Priority priority) {
             Id = id;
             Subject = subject;
@@ -10,7 +16,7 @@ namespace InfiniteAsyncSourceMVVMSample {
             Votes = votes;
             Priority = priority;
         }
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Subject { get; set; }
         public int UserId { get; set; }
         public DateTime Created { get; set; }

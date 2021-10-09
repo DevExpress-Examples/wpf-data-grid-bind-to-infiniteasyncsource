@@ -51,6 +51,7 @@ namespace InfiniteAsyncSourceSample {
         public async static Task AddNewIssueAsync(IssueData issueData) {
             await Task.Delay(300).ConfigureAwait(false);
             AllIssues.Value.Insert(0, issueData);
+            issueData.Id = AllIssues.Value.Max(x => x.Id) + 1;
         }
 
         public async static Task DeleteIssueAsync(IssueData issueData) {
@@ -70,11 +71,6 @@ namespace InfiniteAsyncSourceSample {
             data.Created = row.Created;
             data.User = row.User;
             await Task.Delay(500).ConfigureAwait(false);
-        }
-
-        public static IssueData InitNewIssue() {
-            var maxId = AllIssues.Value.Max(x => x.Id);
-            return new IssueData(maxId + 1, string.Empty, "", DateTime.Now, 0, Priority.Normal);
         }
 
         #region filter

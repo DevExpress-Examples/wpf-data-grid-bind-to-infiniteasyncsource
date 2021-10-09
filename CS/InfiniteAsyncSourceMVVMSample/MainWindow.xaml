@@ -53,9 +53,8 @@
                                ShowFixedTotalSummary="True"
                                ShowUpdateRowButtons="OnCellEditorOpen"
                                NewItemRowPosition="Top"
-                               AddingNewRowCommand="{Binding InitNewIssueCommand}"
                                ValidateRowCommand="{Binding UpdateIssueCommand}"
-                               ValidateDeleteRowsCommand="{Binding DeleteIssuesCommand}"
+                               ValidateRowDeletionCommand="{Binding DeleteIssuesCommand}"
                                x:Name="view"/>
             </dxg:GridControl.View>
         </dxg:GridControl>

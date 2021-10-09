@@ -94,12 +94,7 @@ namespace InfiniteAsyncSourceMVVMSample {
         }
 
         [Command]
-        public void InitNewIssue(NewRowArgs args) {
-            args.Item = IssuesService.InitNewIssue();
-        }
-
-        [Command]
-        public void DeleteIssues(DeleteRowsValidationArgs args) {
+        public void DeleteIssues(ValidateRowDeletionArgs args) {
             foreach(IssueData item in args.Items) {
                 IssuesService.DeleteRowAsync(item).Wait();
             }

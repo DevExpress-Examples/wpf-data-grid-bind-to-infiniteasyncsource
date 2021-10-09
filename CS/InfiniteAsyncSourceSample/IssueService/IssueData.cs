@@ -2,6 +2,12 @@
 
 namespace InfiniteAsyncSourceSample {
     public class IssueData {
+        public IssueData() {
+            Id = -1;
+            Created = DateTime.Now;
+            Priority = Priority.Normal;
+        }
+
         public IssueData(int id, string subject, string user, DateTime created, int votes, Priority priority) {
             Id = id;
             Subject = subject;
@@ -10,7 +16,7 @@ namespace InfiniteAsyncSourceSample {
             Votes = votes;
             Priority = priority;
         }
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Subject { get; set; }
         public string User { get; set; }
         public DateTime Created { get; set; }

@@ -120,14 +120,12 @@ namespace InfiniteAsyncSourceSample {
             }
         }
 
-        private void DeleteRows(object sender, DevExpress.Xpf.Grid.GridDeleteRowsValidationEventArgs e) {
+        private void DeleteRows(object sender, DevExpress.Xpf.Grid.GridValidateRowDeletionEventArgs e) {
+            e.Result = null;
+            e.DisplayErrorMode = DevExpress.Mvvm.Xpf.DisplayDeleteOperationError.ShowMessageBox;
             foreach(var row in e.Rows) {
                 IssuesService.DeleteIssueAsync((IssueData)row).Wait();
             }
-        }
-
-        private void InitNewRow(object sender, AddingNewEventArgs e) {
-            e.NewObject = IssuesService.InitNewIssue();
         }
     }
 }

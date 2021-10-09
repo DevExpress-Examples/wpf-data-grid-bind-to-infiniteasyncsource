@@ -72,14 +72,10 @@ namespace InfiniteAsyncSourceMVVMSample {
             await System.Threading.Tasks.Task.Delay(500).ConfigureAwait(false);
         }
 
-        public static IssueData InitNewIssue() {
-            var maxId = AllIssues.Value.Max(x => x.Id);
-            return new IssueData(maxId + 1, string.Empty, 0, DateTime.Now, 0, Priority.Normal);
-        }
-
         public async static Task AddNewRowAsync(IssueData row) {
             await Task.Delay(500).ConfigureAwait(false);
             AllIssues.Value.Insert(0, row);
+            row.Id = AllIssues.Value.Max(x => x.Id) + 1;
         }
 
         public async static Task DeleteRowAsync(IssueData row) {
