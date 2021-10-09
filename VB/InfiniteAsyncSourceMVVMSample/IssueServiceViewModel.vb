@@ -101,12 +101,7 @@ Namespace InfiniteAsyncSourceMVVMSample
         End Function
 
         <Command>
-        Public Sub InitNewIssue(ByVal args As NewRowArgs)
-            args.Item = IssuesService.InitNewIssue()
-        End Sub
-
-        <Command>
-        Public Sub DeleteIssues(ByVal args As DeleteRowsValidationArgs)
+        Public Sub DeleteIssues(ByVal args As ValidateRowDeletionArgs)
             For Each item As IssueData In args.Items
                 DeleteRowAsync(item).Wait()
             Next

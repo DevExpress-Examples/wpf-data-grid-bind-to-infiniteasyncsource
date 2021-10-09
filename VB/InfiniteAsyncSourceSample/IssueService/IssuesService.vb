@@ -47,6 +47,7 @@ Namespace InfiniteAsyncSourceSample
         Public Async Function AddNewIssueAsync(ByVal issueData As IssueData) As Task
             Await Task.Delay(300).ConfigureAwait(False)
             AllIssues.Value.Insert(0, issueData)
+            issueData.Id = AllIssues.Value.Max(Function(x) x.Id) + 1
         End Function
 
         Public Async Function DeleteIssueAsync(ByVal issueData As IssueData) As Task
@@ -64,11 +65,6 @@ Namespace InfiniteAsyncSourceSample
             data.Created = row.Created
             data.User = row.User
             Await Task.Delay(500).ConfigureAwait(False)
-        End Function
-
-        Public Function InitNewIssue() As IssueData
-            Dim maxId = AllIssues.Value.Max(Function(x) x.Id)
-            Return New IssueData(maxId + 1, String.Empty, "", Date.Now, 0, Priority.Normal)
         End Function
 
 #Region "filter"

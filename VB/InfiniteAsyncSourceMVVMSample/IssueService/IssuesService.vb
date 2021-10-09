@@ -64,14 +64,10 @@ Namespace InfiniteAsyncSourceMVVMSample
             Await Task.Delay(500).ConfigureAwait(False)
         End Function
 
-        Public Function InitNewIssue() As IssueData
-            Dim maxId = AllIssues.Value.Max(Function(x) x.Id)
-            Return New IssueData(maxId + 1, String.Empty, 0, Date.Now, 0, Priority.Normal)
-        End Function
-
         Public Async Function AddNewRowAsync(ByVal row As IssueData) As Task
             Await Task.Delay(500).ConfigureAwait(False)
             AllIssues.Value.Insert(0, row)
+            row.Id = AllIssues.Value.Max(Function(x) x.Id) + 1
         End Function
 
         Public Async Function DeleteRowAsync(ByVal row As IssueData) As Task

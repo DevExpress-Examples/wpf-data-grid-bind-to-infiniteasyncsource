@@ -2,7 +2,11 @@ Namespace InfiniteAsyncSourceMVVMSample
 
     Public Class IssueData
 
-        Private _Id As Integer
+        Public Sub New()
+            Id = -1
+            Created = Date.Now
+            Priority = Priority.Normal
+        End Sub
 
         Public Sub New(ByVal id As Integer, ByVal subject As String, ByVal userId As Integer, ByVal created As Date, ByVal votes As Integer, ByVal priority As Priority)
             Me.Id = id
@@ -14,14 +18,6 @@ Namespace InfiniteAsyncSourceMVVMSample
         End Sub
 
         Public Property Id As Integer
-            Get
-                Return _Id
-            End Get
-
-            Private Set(ByVal value As Integer)
-                _Id = value
-            End Set
-        End Property
 
         Public Property Subject As String
 

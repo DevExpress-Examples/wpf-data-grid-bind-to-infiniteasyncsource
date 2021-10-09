@@ -40,8 +40,7 @@
                                NewItemRowPosition="Top"
                                ShowUpdateRowButtons="OnCellEditorOpen"
                                ValidateRow="CreateUpdateRow"
-                               ValidateDeleteRows="DeleteRows"
-                               AddingNewRow="InitNewRow"
+                               ValidateRowDeletion="DeleteRows"
                                x:Name="view"/>
             </dxg:GridControl.View>
         </dxg:GridControl>

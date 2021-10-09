@@ -83,14 +83,12 @@ Namespace InfiniteAsyncSourceSample
             End If
         End Sub
 
-        Private Sub DeleteRows(ByVal sender As Object, ByVal e As DevExpress.Xpf.Grid.GridDeleteRowsValidationEventArgs)
+        Private Sub DeleteRows(ByVal sender As Object, ByVal e As DevExpress.Xpf.Grid.GridValidateRowDeletionEventArgs)
+            e.Result = Nothing
+            e.DisplayErrorMode = DevExpress.Mvvm.Xpf.DisplayDeleteOperationError.ShowMessageBox
             For Each row In e.Rows
                 DeleteIssueAsync(CType(row, IssueData)).Wait()
             Next
-        End Sub
-
-        Private Sub InitNewRow(ByVal sender As Object, ByVal e As AddingNewEventArgs)
-            e.NewObject = InitNewIssue()
         End Sub
     End Class
 End Namespace
