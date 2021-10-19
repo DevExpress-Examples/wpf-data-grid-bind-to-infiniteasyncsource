@@ -13,4 +13,4 @@ The solution in this example includes the following projects:
 
 Refer to the <a href="https://documentation.devexpress.com/WPF/120194/Controls-and-Libraries/Data-Grid/Binding-to-Data/Binding-to-any-Data-Source-with-Virtual-Sources/How-to-Bind-to-Virtual-Source">How to Bind to Virtual Source</a> tutorial to learn more.
 
-![InfiniteAsyncSource](InfiniteAsyncSource.gif)
+![InfiniteAsyncSource](InfiniteAsyncSource.gif) 
