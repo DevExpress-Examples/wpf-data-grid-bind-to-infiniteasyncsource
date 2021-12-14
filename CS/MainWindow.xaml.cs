@@ -12,8 +12,9 @@ namespace InfiniteAsyncSourceSample {
             InitializeComponent();
 
             var source = new InfiniteAsyncSource() {
-                ElementType = typeof(IssueData)
-            };
+                ElementType = typeof(IssueData),
+                KeyProperty = "Id"
+            }; 
             Unloaded += (o, e) => {
                 source.Dispose();
             };
@@ -42,14 +43,14 @@ namespace InfiniteAsyncSourceSample {
             IssueSortOrder sortOrder = GetIssueSortOrder(e);
             IssueFilter filter = MakeIssueFilter(e.Filter);
 
-            const int pageSize = 30;
+            var take = e.Take ?? 30;
             var issues = await IssuesService.GetIssuesAsync(
-                page: e.Skip / pageSize,
-                pageSize: pageSize,
+                skip: e.Skip,
+                take: take,
                 sortOrder: sortOrder,
                 filter: filter);
 
-            return new FetchRowsResult(issues, hasMoreRows: issues.Length == pageSize);
+            return new FetchRowsResult(issues, hasMoreRows: issues.Length == take);
         }
 
         static async Task<object[]> GetTotalSummariesAsync(GetSummariesAsyncEventArgs e) {
