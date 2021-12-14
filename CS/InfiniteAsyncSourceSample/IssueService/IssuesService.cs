@@ -15,6 +15,7 @@ namespace InfiniteAsyncSourceSample {
                 .Select(i => {
                     date = date.AddSeconds(-rnd.Next(20 * 60));
                     return new IssueData(
+                        id: i,
                         subject: OutlookDataGenerator.GetSubject(),
                         user: OutlookDataGenerator.GetFrom(),
                         created: date,
@@ -31,16 +32,16 @@ namespace InfiniteAsyncSourceSample {
         } 
         #endregion
 
-        public async static Task<IssueData[]> GetIssuesAsync(int page, int pageSize, IssueSortOrder sortOrder, IssueFilter filter) {
-            await Task.Delay(300);
+        public async static Task<IssueData[]> GetIssuesAsync(int skip, int take, IssueSortOrder sortOrder, IssueFilter filter) {
+            await Task.Delay(300).ConfigureAwait(false);
             var issues = SortIssues(sortOrder, AllIssues.Value);
             if(filter != null)
                 issues = FilterIssues(filter, issues);
-            return issues.Skip(page * pageSize).Take(pageSize).ToArray();
+            return issues.Skip(skip).Take(take).ToArray();
         }
 
         public async static Task<IssuesSummaries> GetSummariesAsync(IssueFilter filter) {
-            await Task.Delay(300);
+            await Task.Delay(300).ConfigureAwait(false);
             var issues = (IEnumerable<IssueData>)AllIssues.Value;
             if(filter != null)
                 issues = FilterIssues(filter, issues);
@@ -70,7 +71,7 @@ namespace InfiniteAsyncSourceSample {
         static IEnumerable<IssueData> SortIssues(IssueSortOrder sortOrder, IEnumerable<IssueData> issues) {
             switch(sortOrder) {
             case IssueSortOrder.Default:
-                return issues.OrderByDescending(x => x, new DefaultSortComparer()).ThenByDescending(x => x.Created);
+                return issues;//.OrderByDescending(x => x, new DefaultSortComparer()).ThenByDescending(x => x.Created);
             case IssueSortOrder.CreatedDescending:
                 return issues.OrderByDescending(x => x.Created);
             case IssueSortOrder.VotesAscending:
